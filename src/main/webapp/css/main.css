@@ -1,0 +1,132 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;0,700;1,100;1,300;1,400;1,500;1,700&display=swap');
+
+:root {
+	--primaryColor: #103778;
+	--accentColor: #0593A2;
+	--darkerColor: #151F30;
+	--warnColor: #E3371E;
+	--whiteColor: #F5F5F5;
+	--font: 'Roboto', sans-serif;
+}
+
+/* Reseteo de estilos */
+
+* {
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+	font-family: var(--font);
+}
+
+/* Estilos del header */
+
+.header {
+	height: 74px;
+	padding: 25px 10px;
+	background: var(--primaryColor);
+	color: var(--whiteColor);
+}
+
+/* Estilos del mtitulo principal */
+
+.mainTitle {
+	font-weight: 700;
+	font-size: 24px;
+	margin-left: 10px;
+}
+
+/* Estilos del boton para añadir usuarios */
+
+.addUsers {
+	display: block;
+	background: var(--accentColor);
+	width: 150px;
+	margin: 30px 0px;
+	padding: 10px;
+	font-weight: 400;
+	text-align: center;
+	text-decoration: none;
+	line-height: 1.5;
+	color: var(--whiteColor);
+	transition: all ease-in-out 0.5s;
+}
+
+.addUsers:hover, .editUsers:hover, .deleteUsers:hover {
+	transform: scale(1.1);
+}
+
+.btnAction {
+	display: inline-block;
+	padding: 4px 10px;
+	width: 95%;
+	font-weight: 400;
+	text-align: center;
+	text-decoration: none;
+	color: var(--whiteColor);
+	transition: all ease-in-out 0.5s;
+}
+
+.editUsers {
+	background: var(--accentColor);
+}
+
+.deleteUsers {
+	background: var(--warnColor);
+}
+
+main {
+	padding: 30px;
+}
+
+.table {
+	width: 100%;
+	border-collapse: collapse;
+	padding: 10px;
+	border: 1px solid;
+}
+
+.table tr:nth-child(even) {
+	background: #f2f2f2;
+}
+
+.table th {
+	background: var(--primaryColor);
+	text-align: center;
+	padding: 10px;
+	color: var(--whiteColor);
+}
+
+.table td {
+	padding: 7px;
+}
+
+.table :is(th, td) {
+	border-bottom: 1px solid;
+}
+
+.table tr:hover {
+	background: var(--primaryColor);
+	color: var(--whiteColor);
+	transition: all ease-in 0.3s;
+}
+
+.tdAction {
+	text-align: center;
+	width: 100%;
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: 10px;
+}
+
+.footer {
+	background: var(--darkerColor);
+	color: var(--whiteColor);
+	padding: 20px;
+}
+
+.authors {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap: 10px;
+	margin: 20px 0px;
+}
