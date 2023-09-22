@@ -16,7 +16,7 @@
             <h1 class="mainTitle">Administrador de clientes</h1>
         </header>
         <main>
-            <a href="userForm.jsp" class="addUsers">Agregar usuarios</a>
+            <a href="UserForm.jsp" class="addUsers">Agregar usuarios</a>
             <table class="table">
                 <tr>
                     <th>Nombres</th>
