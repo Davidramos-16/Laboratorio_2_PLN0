@@ -8,7 +8,7 @@ package com.ufg.models;
  *
  * @author hecto
  */
-public class UsersModels {
+public class ClientsModel {
     private int id;
     private String nombre;
     private String apellido;

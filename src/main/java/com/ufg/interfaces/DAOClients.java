@@ -8,6 +8,6 @@ package com.ufg.interfaces;
  *
  * @author hecto
  */
-public interface DAOUsers {
-    
+public interface DAOClients {
+   
 }
