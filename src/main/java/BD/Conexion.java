@@ -111,6 +111,54 @@ public class Conexion {
         return lista;
     }
    
+   public ClientsModel selectByID(int id_) ///Metodo para obtener a los clientes
+    {
+            ClientsModel client = new ClientsModel();
+            
+        try {
+            
+            
+            // Define your SQL query
+           Statement statement = conn.createStatement();
+            
+           statement.execute("use clientes;");
+           
+           // Execute the query and get the result set
+           ResultSet resultSet = statement.executeQuery("SELECT * FROM control_clientes WHERE id_cliente = " + id_ + ";");
+           //ResultSet resultSet = statement.executeQuery("DESCRIBE control_clientes; ");
+            
+            
+            // Process the result set
+            while (resultSet.next()) {
+                // Retrieve data from the result set
+                //String field = resultSet.getString("field");
+                //String type = resultSet.getString("type");
+                
+                // adding in a array list
+                
+                client.setId(resultSet.getInt("id_cliente"));
+                client.setNombre(resultSet.getString("nombre"));
+                client.setApellido(resultSet.getString("apellido"));
+                client.setEmail(resultSet.getString("email"));
+                client.setTelefono(resultSet.getString("telefono"));
+                client.setSaldo(resultSet.getDouble("saldo"));
+                client.setEstado(resultSet.getBoolean("estado"));
+                
+                
+                // Do something with the retrieved data (e.g., print it)
+                System.out.println(client);
+            }
+            
+            // Close resources
+            resultSet.close();
+            statement.close();
+            conn.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return client;
+    }
+   
    public void delete(int id_)
    {
         try {

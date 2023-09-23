@@ -10,7 +10,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Usuarios</title>
+        <title>Clientes</title>
         <link rel="stylesheet" href="./css/main.css">
     </head>
     <body>
@@ -18,7 +18,7 @@
             <h1 class="mainTitle">Administrador de clientes</h1>
         </header>
         <main>
-            <a href="UserForm.jsp" class="addUsers">Agregar usuarios</a>
+            <a href="<%=request.getContextPath()%>/new" class="addUsers">Agregar usuarios</a>
             <table class="table">
                 <thead>
                 <tr>
@@ -40,7 +40,7 @@
                     <td><c:out value="${client.saldo}" /></td>
                     <td class="tdAction">
                         <div>
-                            <a href="update?id=<c:out value='${client.id}' /> class="editUsers btnAction">Editar</a>
+                            <a href="edit?id=<c:out value='${client.id}' /> class="editUsers btnAction">Editar</a>
                         </div>
                         <div>
                             <a href="delete?id=<c:out value='${client.id}' />" class="deleteUsers btnAction">Borrar</a>

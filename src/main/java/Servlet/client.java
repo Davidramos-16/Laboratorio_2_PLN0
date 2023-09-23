@@ -29,39 +29,37 @@ public class client extends HttpServlet {
         this.clientDAO = new DAOClientsImpl();
     }
     
-    
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-     String action = request.getServletPath();
-     
-     switch (action) {
-         case "/new":
-             break;
-         case "/add":
-             break;
-         case "/update":
-             break;
-         case "/delete":
-            try {
-                 deleteClient(request, response);
-             } catch (Exception ex) {
-             Logger.getLogger(client.class.getName()).log(Level.SEVERE, null, ex);
-         }
-             break;
-
-         default:
-         
-             try {
-                 listClients(request, response);
-             } catch (Exception ex) {
-                 Logger.getLogger(client.class.getName()).log(Level.SEVERE, null, ex);
-             }
-         
-             break;
-
-
+        try {
+            String action = request.getServletPath();
+            
+            switch (action) {
+                case "/new":
+                    showNewForm(request, response);
+                    break;
+                case "/add":
+                    insertClient(request, response);
+                    break;
+                case "/edit":
+                    showEditForm(request, response);
+                    break;
+                case "/update":
+                    updateClient(request, response);
+                    break;
+                case "/delete":
+                    deleteClient(request, response);
+                    break;
+                    
+                default:   
+                    listClients(request, response);
+                    break;
+            }
+        } catch (Exception ex) {
+            Logger.getLogger(client.class.getName()).log(Level.SEVERE, null, ex);
         }
+     
     }
 
 
@@ -77,6 +75,51 @@ public class client extends HttpServlet {
         RequestDispatcher dispatcher = request.getRequestDispatcher("index.jsp");
         dispatcher.forward(request, response);
     }
+    
+    private void showNewForm(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		RequestDispatcher dispatcher = request.getRequestDispatcher("UserForm.jsp");
+		dispatcher.forward(request, response);
+	}
+    
+    private void showEditForm(HttpServletRequest request, HttpServletResponse response)
+			throws SQLException, ServletException, IOException {
+		int id = Integer.parseInt(request.getParameter("id"));
+		ClientsModel existingClient = clientDAO.selectByID(id);
+		RequestDispatcher dispatcher = request.getRequestDispatcher("UserForm.jsp");
+		request.setAttribute("client", existingClient);
+		dispatcher.forward(request, response);
+	}
+    
+    private void insertClient(HttpServletRequest request, HttpServletResponse response) 
+			throws SQLException, IOException {
+		String name = request.getParameter("name");
+		String email = request.getParameter("email");
+		String country = request.getParameter("country");
+		ClientsModel newUser = new ClientsModel();
+        try {
+            clientDAO.addClient(newUser);
+        } catch (Exception ex) {
+            Logger.getLogger(client.class.getName()).log(Level.SEVERE, null, ex);
+        }
+		response.sendRedirect("list");
+	}
+
+	private void updateClient(HttpServletRequest request, HttpServletResponse response) 
+			throws SQLException, IOException {
+		int id = Integer.parseInt(request.getParameter("id"));
+		String name = request.getParameter("name");
+		String email = request.getParameter("email");
+		String country = request.getParameter("country");
+
+		ClientsModel editClient = new ClientsModel();
+        try {
+            clientDAO.updateClient(editClient);
+        } catch (Exception ex) {
+            Logger.getLogger(client.class.getName()).log(Level.SEVERE, null, ex);
+        }
+		response.sendRedirect("list");
+	}
     
     private void deleteClient(HttpServletRequest request, HttpServletResponse response) 
 			throws SQLException, IOException, Exception {

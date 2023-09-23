@@ -35,5 +35,10 @@ public class DAOClientsImpl extends Conexion implements DAOClients{
        List<ClientsModel> lista = this.select();
        return lista;
     }
+
+    @Override
+    public void selectClientByID(int id) throws Exception {
+       this.selectByID(id);
+    }
     
 }
