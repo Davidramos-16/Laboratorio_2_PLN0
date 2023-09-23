@@ -40,10 +40,10 @@
                     <td><c:out value="${client.saldo}" /></td>
                     <td class="tdAction">
                         <div>
-                            <a href="userForm.jsp" class="editUsers btnAction">Editar</a>
+                            <a href="update?id=<c:out value='${client.id}' /> class="editUsers btnAction">Editar</a>
                         </div>
                         <div>
-                            <a href="userForm.jsp" class="deleteUsers btnAction">Borrar</a>
+                            <a href="delete?id=<c:out value='${client.id}' />" class="deleteUsers btnAction">Borrar</a>
                         </div>
                     </td>
                 </tr>

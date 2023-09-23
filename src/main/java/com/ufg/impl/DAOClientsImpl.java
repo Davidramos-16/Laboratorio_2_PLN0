@@ -26,8 +26,8 @@ public class DAOClientsImpl extends Conexion implements DAOClients{
     }
 
     @Override
-    public void deleteClient(ClientsModel client) throws Exception {
-        this.delete(client.getId());
+    public void deleteClient(int id) throws Exception {
+        this.delete(id);
     }
 
     @Override

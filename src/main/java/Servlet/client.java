@@ -43,16 +43,23 @@ public class client extends HttpServlet {
          case "/update":
              break;
          case "/delete":
+            try {
+                 deleteClient(request, response);
+             } catch (Exception ex) {
+             Logger.getLogger(client.class.getName()).log(Level.SEVERE, null, ex);
+         }
              break;
+
          default:
-         {
+         
              try {
                  listClients(request, response);
              } catch (Exception ex) {
                  Logger.getLogger(client.class.getName()).log(Level.SEVERE, null, ex);
              }
-         }
+         
              break;
+
 
         }
     }
@@ -71,6 +78,12 @@ public class client extends HttpServlet {
         dispatcher.forward(request, response);
     }
     
+    private void deleteClient(HttpServletRequest request, HttpServletResponse response) 
+			throws SQLException, IOException, Exception {
+		int id = Integer.parseInt(request.getParameter("id"));
+		clientDAO.deleteClient(id);
+		response.sendRedirect("/");
+	}
 
     @Override
     public String getServletInfo() {
