@@ -49,9 +49,6 @@
                 </c:forEach>
                 </tbody>
             </table>
-            <form action="test" method="GET">
-                <button type="submit">test</button>
-            </form>
         </main>
         <footer class="footer">
             <h3 class="title">Creado por: </h3>
