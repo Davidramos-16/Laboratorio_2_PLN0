@@ -16,7 +16,7 @@
             <form action="update" method="post">
         </c:if>
         <c:if test="${client == null}">
-            <form action="insert" method="post">
+            <form action="add" method="post">
         </c:if>
         <c:if test="${client != null}">
             <h2 class="textCenter">Editar cliente</h2>

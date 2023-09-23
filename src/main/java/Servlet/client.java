@@ -92,34 +92,42 @@ public class client extends HttpServlet {
 	}
     
     private void insertClient(HttpServletRequest request, HttpServletResponse response) 
-			throws SQLException, IOException {
-		String name = request.getParameter("name");
-		String email = request.getParameter("email");
-		String country = request.getParameter("country");
-		ClientsModel newUser = new ClientsModel();
+			throws SQLException, IOException {            
+        Double saldo = Double.parseDouble(request.getParameter("saldo"));
+        ClientsModel newClient = new ClientsModel();
+        newClient.setNombre(request.getParameter("name"));
+        newClient.setApellido(request.getParameter("lastname"));
+        newClient.setEmail(request.getParameter("email"));
+        newClient.setTelefono(request.getParameter("phone"));
+        newClient.setSaldo(saldo);
+
         try {
-            clientDAO.addClient(newUser);
+            clientDAO.addClient(newClient);
         } catch (Exception ex) {
             Logger.getLogger(client.class.getName()).log(Level.SEVERE, null, ex);
         }
-		response.sendRedirect("list");
-	}
+        response.sendRedirect("/");
+    }
 
-	private void updateClient(HttpServletRequest request, HttpServletResponse response) 
+    private void updateClient(HttpServletRequest request, HttpServletResponse response) 
 			throws SQLException, IOException {
-		int id = Integer.parseInt(request.getParameter("id"));
-		String name = request.getParameter("name");
-		String email = request.getParameter("email");
-		String country = request.getParameter("country");
+        int id = Integer.parseInt(request.getParameter("id"));
+        Double saldo = Double.parseDouble(request.getParameter("saldo"));
+        ClientsModel editClient = new ClientsModel();
+        editClient.setId(id);
+        editClient.setNombre(request.getParameter("name"));
+        editClient.setApellido(request.getParameter("lastname"));
+        editClient.setEmail(request.getParameter("email"));
+        editClient.setTelefono(request.getParameter("phone"));
+        editClient.setSaldo(saldo);
 
-		ClientsModel editClient = new ClientsModel();
         try {
             clientDAO.updateClient(editClient);
         } catch (Exception ex) {
             Logger.getLogger(client.class.getName()).log(Level.SEVERE, null, ex);
         }
-		response.sendRedirect("list");
-	}
+        response.sendRedirect("/");
+    }
     
     private void deleteClient(HttpServletRequest request, HttpServletResponse response) 
 			throws SQLException, IOException, Exception {
