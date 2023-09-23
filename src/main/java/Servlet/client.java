@@ -36,6 +36,9 @@ public class client extends HttpServlet {
             String action = request.getServletPath();
             
             switch (action) {
+                case "/list":
+                    listClients(request, response);
+                    break;
                 case "/new":
                     showNewForm(request, response);
                     break;
@@ -86,9 +89,8 @@ public class client extends HttpServlet {
 			throws SQLException, ServletException, IOException {
 		int id = Integer.parseInt(request.getParameter("id"));
 		ClientsModel client = clientDAO.selectByID(id);
-		RequestDispatcher dispatcher = request.getRequestDispatcher("UserForm.jsp");
-		request.setAttribute("client", client);
-		dispatcher.forward(request, response);
+                request.setAttribute("client", client);
+		request.getRequestDispatcher("UpdateClient.jsp").forward(request, response);
 	}
     
     private void insertClient(HttpServletRequest request, HttpServletResponse response) 
@@ -106,7 +108,7 @@ public class client extends HttpServlet {
         } catch (Exception ex) {
             Logger.getLogger(client.class.getName()).log(Level.SEVERE, null, ex);
         }
-        response.sendRedirect("/");
+        response.sendRedirect("/Laboratorio_2_PLN0/");
     }
 
     private void updateClient(HttpServletRequest request, HttpServletResponse response) 
@@ -126,15 +128,15 @@ public class client extends HttpServlet {
         } catch (Exception ex) {
             Logger.getLogger(client.class.getName()).log(Level.SEVERE, null, ex);
         }
-        response.sendRedirect("/");
+        response.sendRedirect("/Laboratorio_2_PLN0/");
     }
     
     private void deleteClient(HttpServletRequest request, HttpServletResponse response) 
 			throws SQLException, IOException, Exception {
-		int id = Integer.parseInt(request.getParameter("id"));
-		clientDAO.deleteClient(id);
-		response.sendRedirect("/");
-	}
+        int id = Integer.parseInt(request.getParameter("id"));
+        clientDAO.deleteClient(id);
+        response.sendRedirect("/Laboratorio_2_PLN0/");
+    }
 
     @Override
     public String getServletInfo() {

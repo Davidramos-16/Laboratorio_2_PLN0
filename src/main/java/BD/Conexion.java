@@ -74,7 +74,7 @@ public class Conexion {
            statement.execute("use clientes;");
            
            // Execute the query and get the result set
-           ResultSet resultSet = statement.executeQuery("SELECT * FROM control_clientes;");
+           ResultSet resultSet = statement.executeQuery("SELECT * FROM control_clientes WHERE estado = 1;");
            //ResultSet resultSet = statement.executeQuery("DESCRIBE control_clientes; ");
             
             
@@ -116,8 +116,7 @@ public class Conexion {
             ClientsModel client = new ClientsModel();
             
         try {
-            
-            
+             
             // Define your SQL query
            Statement statement = conn.createStatement();
             
@@ -127,27 +126,16 @@ public class Conexion {
            ResultSet resultSet = statement.executeQuery("SELECT * FROM control_clientes WHERE id_cliente = " + id_ + ";");
            //ResultSet resultSet = statement.executeQuery("DESCRIBE control_clientes; ");
             
-            
-            // Process the result set
-            while (resultSet.next()) {
-                // Retrieve data from the result set
-                //String field = resultSet.getString("field");
-                //String type = resultSet.getString("type");
-                
-                // adding in a array list
-                
-                client.setId(resultSet.getInt("id_cliente"));
-                client.setNombre(resultSet.getString("nombre"));
-                client.setApellido(resultSet.getString("apellido"));
-                client.setEmail(resultSet.getString("email"));
-                client.setTelefono(resultSet.getString("telefono"));
-                client.setSaldo(resultSet.getDouble("saldo"));
-                client.setEstado(resultSet.getBoolean("estado"));
-                
-                
-                // Do something with the retrieved data (e.g., print it)
-                System.out.println(client);
-            }
+            client.setId(resultSet.getInt("id_cliente"));
+            client.setNombre(resultSet.getString("nombre"));
+            client.setApellido(resultSet.getString("apellido"));
+            client.setEmail(resultSet.getString("email"));
+            client.setTelefono(resultSet.getString("telefono"));
+            client.setSaldo(resultSet.getDouble("saldo"));
+            client.setEstado(resultSet.getBoolean("estado"));
+
+
+            System.out.println(client);
             
             // Close resources
             resultSet.close();
@@ -163,28 +151,17 @@ public class Conexion {
    {
         try {
             
-            
             // Define your SQL query
-           
             
            Statement statement = conn.createStatement();
             
            statement.execute("use clientes;");
            
            // Execute the query and get the result set
-           ResultSet resultSet = statement.executeQuery("update  control_clientes set estado = 0 where id_cliente = '"+id_+"' ");
+           ResultSet resultSet = statement.executeQuery("update  control_clientes set estado = 0 where id_cliente = "+id_+";");
             
-            
-            // Process the result set
-            while (resultSet.next()) {
-                // Retrieve data from the result set
-                int id = resultSet.getInt("id_cliente");
-                String name = resultSet.getString("nombre");
-                
-                // Do something with the retrieved data (e.g., print it)
-                System.out.println("Field: " + id + ", Type: " + name);
-            }
-            
+            System.out.println("deleted");
+
             // Close resources
             resultSet.close();
             statement.close();
@@ -194,32 +171,20 @@ public class Conexion {
         }
    }
    
-   public void create(String nombre_, String apellido_, String email_, String telefono_, double saldo_, String estado_ )           
+   public void create(String nombre_, String apellido_, String email_, String telefono_, double saldo_, int estado_ )           
    {
         try {
-            
-            
+             
             // Define your SQL query
-           
-            
+                       
            Statement statement = conn.createStatement();
             
            statement.execute("use clientes;");
            
            // Execute the query and get the result set
-           ResultSet resultSet = statement.executeQuery("insert into  control_clientes(nombre,apellido,email, telefono, saldo, estado) values('"+nombre_+"','"+apellido_+"','"+email_+"','"+telefono_+"','"+saldo_+"','"+estado_+"') ");
-            
-            
-            // Process the result set
-            while (resultSet.next()) {
-                // Retrieve data from the result set
-                int id = resultSet.getInt("id_cliente");
-                String name = resultSet.getString("nombre");
-                
-                // Do something with the retrieved data (e.g., print it)
-                System.out.println("Field: " + id + ", Type: " + name);
-            }
-            
+           ResultSet resultSet = statement.executeQuery("insert into  control_clientes(nombre,apellido,email, telefono, saldo, estado) values('"+nombre_+"','"+apellido_+"','"+email_+"','"+telefono_+"','"+saldo_+"',"+estado_+");");
+                        
+           System.out.println("created");
             // Close resources
             resultSet.close();
             statement.close();
@@ -229,32 +194,20 @@ public class Conexion {
         }
    }
    
-   public void update(int id_, String nombre_, String apellido_, String email_, String telefono_, double saldo_, String estado_)
+   public void update(int id_, String nombre_, String apellido_, String email_, String telefono_, double saldo_, int estado_)
    {
-        try {
-            
+        try { 
             
             // Define your SQL query
            
-            
            Statement statement = conn.createStatement();
             
            statement.execute("use clientes;");
            
            // Execute the query and get the result set
-           ResultSet resultSet = statement.executeQuery("update control_clientes SET nombre = "+nombre_+"' ,apellido = '"+apellido_+"' ,email = '"+email_+"', telefono = '"+telefono_+"', saldo '"+saldo_+"' , estado ='"+estado_+"' WHERE id_cliente ='"+id_+"';  ");
+           ResultSet resultSet = statement.executeQuery("update control_clientes SET nombre = "+nombre_+"' ,apellido = '"+apellido_+"' ,email = '"+email_+"', telefono = '"+telefono_+"', saldo '"+saldo_+"' , estado ="+estado_+" WHERE id_cliente ='"+id_+"';");
             
-            
-            // Process the result set
-            while (resultSet.next()) {
-                // Retrieve data from the result set
-                int id = resultSet.getInt("id_cliente");
-                String name = resultSet.getString("nombre");
-                
-                // Do something with the retrieved data (e.g., print it)
-                System.out.println("Field: " + id + ", Type: " + name);
-            }
-            
+           System.out.println("updated");
             // Close resources
             resultSet.close();
             statement.close();

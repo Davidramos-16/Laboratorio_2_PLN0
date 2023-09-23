@@ -17,6 +17,31 @@ public class ClientsModel {
     private Double saldo;
     private Boolean estado;
 
+    public ClientsModel() {
+    }
+
+    public ClientsModel(String nombre, String apellido, String email, String telefono, Double saldo, Boolean estado) {
+        super();
+        this.id = id;
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.email = email;
+        this.telefono = telefono;
+        this.saldo = saldo;
+        this.estado = estado;
+    }
+    
+    public ClientsModel(int id, String nombre, String apellido, String email, String telefono, Double saldo, Boolean estado) {
+        super();
+        this.id = id;
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.email = email;
+        this.telefono = telefono;
+        this.saldo = saldo;
+        this.estado = estado;
+    }
+
     public Boolean getEstado() {
         return estado;
     }

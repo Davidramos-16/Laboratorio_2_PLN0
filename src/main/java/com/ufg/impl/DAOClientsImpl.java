@@ -17,12 +17,12 @@ public class DAOClientsImpl extends Conexion implements DAOClients{
 
     @Override
     public void addClient(ClientsModel client) throws Exception {
-       this.create(client.getNombre(), client.getApellido(), client.getEmail(), client.getTelefono(), client.getSaldo(), "1");
+       this.create(client.getNombre(), client.getApellido(), client.getEmail(), client.getTelefono(), client.getSaldo(), 1);
     }
 
     @Override
     public void updateClient(ClientsModel client) throws Exception {
-       this.update(client.getId(), client.getNombre(), client.getApellido(), client.getEmail(), client.getTelefono(), client.getSaldo(), "1");
+       this.update(client.getId(), client.getNombre(), client.getApellido(), client.getEmail(), client.getTelefono(), client.getSaldo(), 1);
     }
 
     @Override
