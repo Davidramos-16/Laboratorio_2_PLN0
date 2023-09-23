@@ -85,9 +85,9 @@ public class client extends HttpServlet {
     private void showEditForm(HttpServletRequest request, HttpServletResponse response)
 			throws SQLException, ServletException, IOException {
 		int id = Integer.parseInt(request.getParameter("id"));
-		ClientsModel existingClient = clientDAO.selectByID(id);
+		ClientsModel client = clientDAO.selectByID(id);
 		RequestDispatcher dispatcher = request.getRequestDispatcher("UserForm.jsp");
-		request.setAttribute("client", existingClient);
+		request.setAttribute("client", client);
 		dispatcher.forward(request, response);
 	}
     

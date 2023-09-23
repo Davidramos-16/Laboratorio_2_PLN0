@@ -40,7 +40,7 @@
                     <td><c:out value="${client.saldo}" /></td>
                     <td class="tdAction">
                         <div>
-                            <a href="edit?id=<c:out value='${client.id}' /> class="editUsers btnAction">Editar</a>
+                            <a href="edit?id=<c:out value='${client.id}' />" class="editUsers btnAction" >Editar</a>
                         </div>
                         <div>
                             <a href="delete?id=<c:out value='${client.id}' />" class="deleteUsers btnAction">Borrar</a>
