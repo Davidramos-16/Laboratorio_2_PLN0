@@ -30,8 +30,8 @@
                 </tr>
                 </thead>
                 <tbody>
+                <c:forEach var="client" items="${listClient}">
                 <tr>
-                    <c:forEach var="client" items="${listClient}">
                     <td><c:out value="${client.nombre}" /></td>
                     <td><c:out value="${client.apellido}" /></td>
                     <td><c:out value="${client.email}" /></td>
