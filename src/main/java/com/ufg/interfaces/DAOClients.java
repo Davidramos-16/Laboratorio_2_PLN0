@@ -12,8 +12,8 @@ import java.util.List;
  * @author hecto
  */
 public interface DAOClients {
-    public void addClient(ClientsModel user) throws Exception;
-    public void updateClient(ClientsModel user) throws Exception;
-    public void deleteClient(ClientsModel user) throws Exception;
+    public void addClient(ClientsModel client) throws Exception;
+    public void updateClient(ClientsModel client) throws Exception;
+    public void deleteClient(ClientsModel client) throws Exception;
     public List<ClientsModel> getClients() throws Exception;
 }
