@@ -1,0 +1,208 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;0,700;1,100;1,300;1,400;1,500;1,700&display=swap');
+
+:root {
+	--primaryColor: #103778;
+	--accentColor: #0593A2;
+	--darkerColor: #151F30;
+	--warnColor: #E3371E;
+	--whiteColor: #F5F5F5;
+	--font: 'Roboto', sans-serif;
+}
+
+/* Reseteo de estilos */
+
+* {
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+	font-family: var(--font);
+}
+
+/* Estilos del header */
+
+.header {
+	height: 74px;
+	padding: 25px 10px;
+	background: var(--primaryColor);
+	color: var(--whiteColor);
+}
+
+/* Estilos del mtitulo principal */
+
+.mainTitle {
+	font-weight: 700;
+	font-size: 24px;
+	margin-left: 10px;
+}
+
+/* Estilos del boton para añadir usuarios */
+
+.addUsers {
+	display: block;
+	background: var(--accentColor);
+	width: 150px;
+	margin: 30px 0px;
+	padding: 10px;
+	font-weight: 400;
+	text-align: center;
+	text-decoration: none;
+	line-height: 1.5;
+	color: var(--whiteColor);
+	transition: all ease-in-out 0.5s;
+}
+
+.addUsers:hover, .editUsers:hover, .deleteUsers:hover {
+	transform: scale(1.1);
+}
+
+.btnAction {
+	display: inline-block;
+	padding: 4px 10px;
+	width: 95%;
+	font-weight: 400;
+	text-align: center;
+	text-decoration: none;
+	color: var(--whiteColor);
+	transition: all ease-in-out 0.5s;
+}
+
+.editUsers {
+	background: var(--accentColor);
+}
+
+.deleteUsers {
+	background: var(--warnColor);
+}
+
+main {
+	padding: 30px;
+}
+
+.table {
+	width: 100%;
+	border-collapse: collapse;
+	padding: 10px;
+	border: 1px solid;
+}
+
+.table tr:nth-child(even) {
+	background: #f2f2f2;
+}
+
+.table th {
+	background: var(--primaryColor);
+	text-align: center;
+	padding: 10px;
+	color: var(--whiteColor);
+}
+
+.table td {
+	padding: 7px;
+}
+
+.table :is(th, td) {
+	border-bottom: 1px solid;
+}
+
+.table tr:hover {
+	background: var(--primaryColor);
+	color: var(--whiteColor);
+	transition: all ease-in 0.3s;
+}
+
+.tdAction {
+	text-align: center;
+	width: 100%;
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: 10px;
+}
+
+.footer {
+	background: var(--darkerColor);
+	color: var(--whiteColor);
+	padding: 20px;
+}
+
+.authors {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap: 10px;
+	margin: 20px 0px;
+}
+
+/* Estilos Fromularios */
+
+.bgForm {
+	/*background: var(--darkerColor);*/
+	background: var(--whiteColor);
+}
+
+form {
+	position: relative;
+	text-align: center;
+	width: 60%;
+	margin: 5vh auto;
+	padding: 40px 0px;
+	color: var(--whiteColor);
+}
+
+form::before {
+	content: '';
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	border-radius: 32px;
+	/* background: linear-gradient(375deg, rgba(255,255,255,0.1), rgba(255,255,255,0));*/
+	/*background: rgba(255,255,255,0.1);*/
+	background: rgba(0,0,0,0.8);
+	/*background: rgba(21,31,48,0.9);*/
+	backdrop-filter: blur(20px);
+	box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+	z-index: -1;
+}
+
+.inputContainer {
+	display: grid;
+	grid-template-columns: 20% 1fr;
+	gap: 10px;
+	padding: 0px 40px;
+	margin: 40px 0px;
+}
+
+.inputContainer input {
+	background: none;
+	padding: 4.2px 10px;
+	margin-right: 30px;
+	outline: none;
+	border: none;
+	border-bottom: 1px solid var(--whiteColor);
+	transition: all ease-out 0.3s;
+	color: var(--whiteColor);
+}
+
+.inputContainer input::placeholder {
+	color: rgba(255,255,255,0.5);
+}
+
+.inputContainer input:focus {
+	border-color: var(--accentColor);
+}
+
+.btnSubmit {
+	font-size: 17px;
+	padding: 20px 40px;
+	background: var(--primaryColor);
+	color: var(--whiteColor);
+	border: none;
+	border-radius: 15px;
+	cursor: pointer;
+	transition: all linear 0.3s;
+}
+
+.btnSubmit:hover {
+	filter: brightness(1.3);
+	transform: scale(1.03);
+}
