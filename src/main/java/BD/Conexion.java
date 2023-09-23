@@ -8,6 +8,9 @@ import java.sql.DriverManager;
 import java.sql.Statement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import com.ufg.models.ClientsModel;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -58,31 +61,44 @@ public class Conexion {
         }
     }
     
-   public void select() ///Metodo para obtener a los clientes
+   public List<ClientsModel> select() ///Metodo para obtener a los clientes
     {
-        
+            List<ClientsModel> lista = null;
+            lista = new ArrayList();
         try {
             
             
             // Define your SQL query
-           
-            
            Statement statement = conn.createStatement();
             
            statement.execute("use clientes;");
            
            // Execute the query and get the result set
-           ResultSet resultSet = statement.executeQuery("SELECT * FROM control_clientes where id_cliente = 1; ");
+           ResultSet resultSet = statement.executeQuery("SELECT * FROM control_clientes;");
+           //ResultSet resultSet = statement.executeQuery("DESCRIBE control_clientes; ");
             
             
             // Process the result set
             while (resultSet.next()) {
                 // Retrieve data from the result set
-                int id = resultSet.getInt("id_cliente");
-                String name = resultSet.getString("nombre");
+                //String field = resultSet.getString("field");
+                //String type = resultSet.getString("type");
+                
+                // adding in a array list
+                ClientsModel client = new ClientsModel();
+                
+                client.setId(resultSet.getInt("id_cliente"));
+                client.setNombre(resultSet.getString("nombre"));
+                client.setApellido(resultSet.getString("apellido"));
+                client.setEmail(resultSet.getString("email"));
+                client.setTelefono(resultSet.getString("telefono"));
+                client.setSaldo(resultSet.getDouble("saldo"));
+                client.setEstado(resultSet.getBoolean("estado"));
+                
+                lista.add(client);
                 
                 // Do something with the retrieved data (e.g., print it)
-                System.out.println("Field: " + id + ", Type: " + name);
+                System.out.println(client);
             }
             
             // Close resources
@@ -92,9 +108,10 @@ public class Conexion {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        return lista;
     }
    
-   public void delete(String id_)
+   public void delete(int id_)
    {
         try {
             
