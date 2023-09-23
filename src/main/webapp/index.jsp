@@ -11,6 +11,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Usuarios</title>
+        <link rel="stylesheet" href="./css/main.css">
     </head>
     <body>
         <header class="header">
@@ -64,7 +65,5 @@
                 <small>UFG 2023</small>
             </center>
         </footer>
-
-        <link rel="stylesheet" href="./css/main.css">
     </body>
 </html>
